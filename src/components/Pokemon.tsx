@@ -18,8 +18,12 @@ export type PokemonProps = {
     height: number,
     weight: number,
     baseExperience: number,
-    order: number
+    order: number,
+    health: number,
+    onClickAction : () => void
 }
+
+
 
 function Pokemon({
     name,
@@ -28,10 +32,12 @@ function Pokemon({
     weight,
     baseExperience,
     order,
+    health,
+    onClickAction
 }: PokemonProps) {
     return (
-        <article className="card">
-            <img className="img-fluid pokemon-sprite" src={image} alt={`${name} Pokemon`} />
+        <div className="card shadow text-center col-3">
+            <img className="text-center pokemon-sprite" src={image} alt={`${name} Pokemon`} />
 
             <div className="card-content">
                 <h1 className="name">{name}</h1>
@@ -48,9 +54,13 @@ function Pokemon({
                     </div>
                
                     <p> <strong>Order : </strong>{order} </p>
+
+                    <p> <strong>Health : </strong>{health} </p>
+
+                    <button className="btn btn-danger" onClick={onClickAction}>Damage Pokemon</button>
                 </div>
             </div>
-        </article>
+        </div>
     )
 }
 
